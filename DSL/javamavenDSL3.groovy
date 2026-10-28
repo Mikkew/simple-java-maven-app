@@ -45,3 +45,21 @@ job('Java Maven App DSL 3') {
        }
     }
 }
+
+job('Job test Hola Mundo') {
+	description('Aplicacion Hola Mundo de Prueba')
+	scm {
+    git('https://github.com/Mikkew/simple-java-maven-app.git', 'master') { node ->
+        node / gitConfigName('Miguel Medina Secundino')
+        node / gitConfigEmail('miguelmedinasec.94@gmail.com')
+      }
+    }
+	triggers {
+    githubPush()
+  }    
+	steps {
+		shell('''
+			echo "Hola Mundo!!!!"
+		''')
+	}
+}
