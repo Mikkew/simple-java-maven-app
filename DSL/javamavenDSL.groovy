@@ -8,16 +8,16 @@ job('Java Maven App DSL') {
     }
     steps {
         maven {
-          mavenInstallation('mavenjenkins')
+          mavenInstallation('maven-jenkins')
           goals('-B -DskipTests clean package')
         }
         maven {
-          mavenInstallation('mavenjenkins')
+          mavenInstallation('maven-jenkins')
           goals('test')
         }
         shell('''
-          echo "Entrega: Desplegando la aplicación" 
-          java -jar "/var/jenkins_home/workspace/Java Maven App DSL/target/my-app-1.0-SNAPSHOT.jar"
+          echo "Entrega desplegando la aplicacion"
+          java -jar "/var/jenkins_home/workspace/Java App con Maven/target/my-app-1.0-SNAPSHOT.jar"
         ''')  
     }
     publishers {
